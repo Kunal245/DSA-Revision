@@ -1,0 +1,44 @@
+
+
+
+//using morris traversal
+    vector<int> solve(TreeNode* root){
+
+        vector<int> ans;
+        TreeNode* curr = root;
+
+        while(curr != NULL){
+
+            // 2 case-> left hai, left nhi hai
+
+            // left nhi hai
+            if(curr->left == NULL){
+                ans.push_back(curr->val);
+                curr = curr->right;
+            }
+            //left hai
+            else{
+                //pehele prev = curr node banao
+                TreeNode* prev = curr->left;
+
+                // prev ka right most tk jao
+                while(prev->right && prev->right != curr){
+                    prev = prev->right;
+                }
+
+                //agar no thread
+                if(prev->right == NULL){
+                    prev->right = curr;
+                    curr = curr->left;
+                }
+                //agar thread
+                else{
+                    prev->right = NULL;
+                    ans.push_back(curr->val);
+                    curr = curr->right;
+                }
+            }
+        }
+        return ans;
+
+    }
