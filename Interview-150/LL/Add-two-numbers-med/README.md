@@ -1,3 +1,3 @@
 # Add Two Numbers (Leetcode-med):
 
-- [Approach.png](./approach.png)
+- ![Approach.png](./approach.png)
